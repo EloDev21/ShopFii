@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{product.name}} - ShoFii {% endblock %}
+
+
+
+{% block content %}
+<div class="container">
+
+    
+<div class="row">
+    <div class="col-md-5">
+   <img src="/uploads/{{product.illustration}}" alt="photo-article" class ="img-fluid"> 
+   </div>
+        <div class="product-item text-center col-md-7 my-auto center">
+    <h4>{{product.name}}</h4>
+    <p>{{product.subtitle}}</p>
+
+     {{(product.price /100 )|number_format(2)}} €
+  <hr>
+    <p>{{product.description}}</p>
+    <a href="" class="btn btn-primary">Ajouter au panier</a>
+    <a href="{{path ('products')}}" class="btn btn-secondary">Retour aux produits</a>
+    </div>
+       
+
+</div>
+{% endblock %}

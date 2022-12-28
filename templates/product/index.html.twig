@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Nos produits !
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h3>
+          Filtrer
+        </h3>
+
+        <div class="row">
+          {{ form(form) }}
+        </div>
+      </div>
+      <div class="col-md-9">
+        <h3>
+          Nos produits chez ShopFii
+        </h3>
+        <br /> <hr />
+        <div class="row">
+          {% for product in products %}
+            <div class="col-md-4">
+              <div class="product-item text-center">
+                <a href="{{
+                  path(
+                    'product',
+                    {
+                      slug: product.slug
+                    }
+                  )
+                  }}">
+                  <img src="uploads/{{ product.illustration }}"
+                    alt="photo-article"
+                    class="img-fluid" />
+                </a>
+                <h4>
+                  {{ product.name }}
+                </h4>
+                <span>{{ product.subtitle }}</span><br />
+                <p>
+                  {{ product.description }}
+                </p>
+                <strong>{{ (product.price / 100)|number_format(2) }} €</strong>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
